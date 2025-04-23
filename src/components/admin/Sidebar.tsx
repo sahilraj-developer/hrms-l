@@ -50,6 +50,12 @@ const Sidebar = () => {
             { name: "Health", path: "/admin/health" },
             { name: "Job Hub", path: "/admin/job-hub" },
             { name: "Learning", path: "/admin/learning" },
+            { name: "Leaves", path: "/admin/leaves" },
+            { name: "Organisation", path: "/admin/organisation" },
+            { name: "Payroll", path: "/admin/payroll" },
+            { name: "Performance", path: "/admin/performance" },
+            { name: "Projects", path: "/admin/projects" },
+            { name: "Reimbursement", path: "/admin/reimbursement" },
 
             { name: "Reports", path: "/admin/reports" },
             { name: "Settings", path: "/admin/settings" },

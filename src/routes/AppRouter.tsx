@@ -19,6 +19,12 @@ import EmployeeHiring from "@/pages/admin/EmployeeHiring";
 import HealthPage from "@/pages/admin/Health";
 import JobHubPage from "@/pages/admin/JobHub";
 import LearningPage from "@/pages/admin/Learning";
+import LeavesPage from "@/pages/admin/Leaves";
+import OrganizationPage from "@/pages/admin/Organisation";
+import PayrollPage from "@/pages/admin/Payroll";
+import PerformancePage from "@/pages/admin/Performance";
+import ProjectsPage from "@/pages/admin/Projects";
+import ReimbursementPage from "@/pages/admin/Reimbursement";
 
 const AppRouter = () => {
   return (
@@ -34,9 +40,9 @@ const AppRouter = () => {
             path="/admin/*"
             element={
               // <ProtectedRoute>
-                <AdminLayout>
-                  <Dashboard />
-                </AdminLayout>
+              <AdminLayout>
+                <Dashboard />
+              </AdminLayout>
               // </ProtectedRoute>
             }
           />
@@ -44,9 +50,9 @@ const AppRouter = () => {
             path="/admin/users"
             element={
               // <ProtectedRoute>
-                <AdminLayout>
-                  <Users />
-                </AdminLayout>
+              <AdminLayout>
+                <Users />
+              </AdminLayout>
               // </ProtectedRoute>
             }
           />
@@ -57,59 +63,126 @@ const AppRouter = () => {
             path="/admin/employee-hiring"
             element={
               // <ProtectedRoute>
-                <AdminLayout>
-                  <EmployeeHiring/>
-                </AdminLayout>
+              <AdminLayout>
+                <EmployeeHiring />
+              </AdminLayout>
               // </ProtectedRoute>
             }
           />
 
 
-           <Route
+          <Route
             path="/admin/employee-info"
             element={
               // <ProtectedRoute>
-                <AdminLayout>
-                  <EmployeeInfoPage/>
-                </AdminLayout>
+              <AdminLayout>
+                <EmployeeInfoPage />
+              </AdminLayout>
               // </ProtectedRoute>
             }
           />
 
-<Route
+          <Route
             path="/admin/health"
             element={
               // <ProtectedRoute>
-                <AdminLayout>
-                  <HealthPage/>
-                </AdminLayout>
+              <AdminLayout>
+                <HealthPage />
+              </AdminLayout>
               // </ProtectedRoute>
             }
           />
 
-<Route
+          <Route
             path="/admin/job-hub"
             element={
               // <ProtectedRoute>
-                <AdminLayout>
-                  <JobHubPage/>
-                </AdminLayout>
+              <AdminLayout>
+                <JobHubPage />
+              </AdminLayout>
+              // </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/admin/learning"
+            element={
+              // <ProtectedRoute>
+              <AdminLayout>
+                <LearningPage />
+              </AdminLayout>
+              // </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/admin/leaves"
+            element={
+              // <ProtectedRoute>
+              <AdminLayout>
+                <LeavesPage />
+              </AdminLayout>
+              // </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/admin/organisation"
+            element={
+              // <ProtectedRoute>
+              <AdminLayout>
+                <OrganizationPage />
+              </AdminLayout>
+              // </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/admin/payroll"
+            element={
+              // <ProtectedRoute>
+              <AdminLayout>
+                <PayrollPage />
+              </AdminLayout>
+              // </ProtectedRoute>
+            }
+          />
+
+
+<Route
+            path="/admin/performance"
+            element={
+              // <ProtectedRoute>
+              <AdminLayout>
+                <PerformancePage/>
+              </AdminLayout>
               // </ProtectedRoute>
             }
           />
 
 <Route
-            path="/admin/learning"
+            path="/admin/projects"
             element={
               // <ProtectedRoute>
-                <AdminLayout>
-                  <LearningPage/>
-                </AdminLayout>
+              <AdminLayout>
+                <ProjectsPage/>
+              </AdminLayout>
               // </ProtectedRoute>
             }
           />
 
 
+
+<Route
+            path="/admin/reimbursement"
+            element={
+              // <ProtectedRoute>
+              <AdminLayout>
+                <ReimbursementPage/>
+              </AdminLayout>
+              // </ProtectedRoute>
+            }
+          />
 
 
 
@@ -117,9 +190,9 @@ const AppRouter = () => {
             path="/admin/reports"
             element={
               // <ProtectedRoute>
-                <AdminLayout>
-                  <Reports />
-                </AdminLayout>
+              <AdminLayout>
+                <Reports />
+              </AdminLayout>
               // </ProtectedRoute>
             }
           />
@@ -130,22 +203,22 @@ const AppRouter = () => {
             path="/admin/settings"
             element={
               // <ProtectedRoute>
-                <AdminLayout>
-                  <Settings />
-                </AdminLayout>
+              <AdminLayout>
+                <Settings />
+              </AdminLayout>
               // </ProtectedRoute>
             }
           />
 
 
 
-<Route
+          <Route
             path="/admin/cms"
             element={
               // <ProtectedRoute>
-                <AdminLayout>
-                  <CMS />
-                </AdminLayout>
+              <AdminLayout>
+                <CMS />
+              </AdminLayout>
               // </ProtectedRoute>
             }
           />
@@ -156,9 +229,9 @@ const AppRouter = () => {
             path="/client/*"
             element={
               <ProtectedRoute>
-                <ClientLayout>
+                {/* <ClientLayout> */}
                   <Home />
-                </ClientLayout>
+                {/* </ClientLayout> */}
               </ProtectedRoute>
             }
           />
@@ -184,7 +257,7 @@ const AppRouter = () => {
             }
           />
 
-<Route
+          <Route
             path="/client/cart"
             element={
               <ProtectedRoute>
