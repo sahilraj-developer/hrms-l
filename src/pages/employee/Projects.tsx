@@ -1,8 +1,10 @@
 "use client"
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
+import { Separator } from "@/components/ui/separator"
+import { CalendarDays, Code, Rocket, CheckCircle2 } from "lucide-react"
 
 export default function EmployeeProjectsPage() {
   const ongoingProjects = [
@@ -43,63 +45,94 @@ export default function EmployeeProjectsPage() {
   ]
 
   return (
-    <div className="p-6 space-y-6">
-      <h1 className="text-3xl font-bold tracking-tight">My Projects</h1>
+    <div className="max-w-6xl mx-auto p-6 space-y-10">
+      <div>
+        <h1 className="text-3xl font-bold text-primary mb-1">My Projects</h1>
+        <p className="text-muted-foreground text-sm">
+          Track your current and completed project responsibilities.
+        </p>
+      </div>
 
-      <div className="space-y-4">
-        <Card>
-          <CardHeader>
-            <CardTitle>Ongoing Projects</CardTitle>
+      <section>
+        <Card className="shadow-md">
+          <CardHeader className="pb-4">
+            <CardTitle className="flex items-center gap-2 text-xl font-semibold text-blue-600">
+              <Rocket className="w-5 h-5" />
+              Ongoing Projects
+            </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <Separator />
+          <CardContent className="space-y-6 pt-6">
             {ongoingProjects.map(project => (
-              <div key={project.id} className="space-y-2">
+              <div key={project.id} className="space-y-3 border-b pb-6 last:border-none last:pb-0">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-semibold">{project.name}</h3>
+                  <h3 className="text-lg font-medium">{project.name}</h3>
                   <Badge variant="default">{project.status}</Badge>
                 </div>
                 <p className="text-muted-foreground">{project.description}</p>
-                <p className="text-sm text-muted-foreground">Role: {project.role}</p>
-                <p className="text-sm text-muted-foreground">
-                  Timeline: {project.startDate} → {project.deadline}
-                </p>
+                <div className="text-sm space-y-1">
+                  <p>
+                    <Code className="inline mr-1 w-4 h-4" />
+                    Role: <span className="font-medium">{project.role}</span>
+                  </p>
+                  <p>
+                    <CalendarDays className="inline mr-1 w-4 h-4" />
+                    {project.startDate} → {project.deadline}
+                  </p>
+                </div>
                 <div className="flex flex-wrap gap-2">
                   {project.techStack.map((tech, index) => (
-                    <Badge key={index} variant="secondary">{tech}</Badge>
+                    <Badge key={index} variant="secondary" className="text-xs">
+                      {tech}
+                    </Badge>
                   ))}
                 </div>
-                <Progress value={project.progress} />
+                <Progress value={project.progress} className="h-2 mt-2" />
               </div>
             ))}
           </CardContent>
         </Card>
+      </section>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Completed Projects</CardTitle>
+      <section>
+        <Card className="shadow-md">
+          <CardHeader className="pb-4">
+            <CardTitle className="flex items-center gap-2 text-xl font-semibold text-green-600">
+              <CheckCircle2 className="w-5 h-5" />
+              Completed Projects
+            </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <Separator />
+          <CardContent className="space-y-6 pt-6">
             {completedProjects.map(project => (
-              <div key={project.id} className="space-y-2">
+              <div key={project.id} className="space-y-3 border-b pb-6 last:border-none last:pb-0">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-semibold">{project.name}</h3>
+                  <h3 className="text-lg font-medium">{project.name}</h3>
                   <Badge variant="success">{project.status}</Badge>
                 </div>
                 <p className="text-muted-foreground">{project.description}</p>
-                <p className="text-sm text-muted-foreground">Role: {project.role}</p>
-                <p className="text-sm text-muted-foreground">
-                  Completed on: {project.completedDate}
-                </p>
+                <div className="text-sm space-y-1">
+                  <p>
+                    <Code className="inline mr-1 w-4 h-4" />
+                    Role: <span className="font-medium">{project.role}</span>
+                  </p>
+                  <p>
+                    <CalendarDays className="inline mr-1 w-4 h-4" />
+                    Completed on: {project.completedDate}
+                  </p>
+                </div>
                 <div className="flex flex-wrap gap-2">
                   {project.techStack.map((tech, index) => (
-                    <Badge key={index} variant="secondary">{tech}</Badge>
+                    <Badge key={index} variant="secondary" className="text-xs">
+                      {tech}
+                    </Badge>
                   ))}
                 </div>
               </div>
             ))}
           </CardContent>
         </Card>
-      </div>
+      </section>
     </div>
   )
 }

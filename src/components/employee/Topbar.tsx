@@ -16,7 +16,7 @@ const Topbar = () => {
       {/* Logo Section */}
       <div className="flex items-center space-x-3">
         <UserCog />
-        <h1 className="text-xl font-semibold">HR Dashboard</h1>
+        <h1 className="text-xl font-semibold">Employee Dashboard</h1>
       </div>
 
       {/* Navigation and User Section */}
@@ -33,14 +33,14 @@ const Topbar = () => {
             onClick={toggleDropdown} // Toggle dropdown on button click
           >
             <UserCog />
-            <span className="hidden md:block">Admin</span>
+            <span className="hidden md:block">Employee</span>
           </button>
 
           {/* Dropdown Menu */}
           {isDropdownOpen && (
             <div className="absolute right-0 mt-2 w-48 bg-white text-gray-800 shadow-lg rounded-lg border border-gray-300">
               <ul>
-                <Link to={'/admin/settings'} ><li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Profile Settings</li></Link>
+                <Link to={'/employee/settings'} ><li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Profile Settings</li></Link>
                 <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Logout</li>
               </ul>
             </div>

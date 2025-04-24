@@ -1,4 +1,4 @@
-// import Link from "next/link"
+import { useState } from 'react';
 import { Button } from "@/components/ui/button"
 import {
   Building2,
@@ -11,6 +11,8 @@ import {
   Award,
   Heart,
   CheckCircle2,
+  Menu,
+  X
 } from "lucide-react"
 import { Testimonial } from "@/components/testimonial"
 import { FeatureCard } from "@/components/feature-card"
@@ -18,6 +20,8 @@ import { StatCard } from "@/components/stat-card"
 import { Link } from "react-router-dom"
 
 export default function HomePage() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   // Sample company data
   const companies = [
     {
@@ -90,14 +94,17 @@ export default function HomePage() {
   ]
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col items-center justify-center">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-2 font-bold text-xl">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6">
+  <div className="flex items-center gap-2 font-bold text-xl">
+
             <Building2 className="h-6 w-6" />
             <span>HRMS Portal</span>
           </div>
-          <nav className="hidden md:flex gap-6">
+          
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-6">
             <Link to="#features" className="text-sm font-medium hover:underline underline-offset-4">
               Features
             </Link>
@@ -111,7 +118,18 @@ export default function HomePage() {
               About
             </Link>
           </nav>
-          <div className="flex items-center gap-4">
+
+          {/* Mobile Navigation Button */}
+          <button 
+            className="md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+
+          {/* Login Buttons (Desktop) */}
+          <div className="hidden md:flex items-center gap-4">
             <Link to="/employee/dashboard">
               <Button variant="outline">Employee Login</Button>
             </Link>
@@ -120,42 +138,86 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden border-t bg-background">
+            <div className="container flex flex-col gap-4 py-4 px-4 sm:px-6">
+              <Link 
+                to="#features" 
+                className="text-sm font-medium hover:underline underline-offset-4"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Features
+              </Link>
+              <Link 
+                to="#testimonials" 
+                className="text-sm font-medium hover:underline underline-offset-4"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Testimonials
+              </Link>
+              <Link 
+                to="#pricing" 
+                className="text-sm font-medium hover:underline underline-offset-4"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Pricing
+              </Link>
+              <Link 
+                to="#about" 
+                className="text-sm font-medium hover:underline underline-offset-4"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About
+              </Link>
+              <div className="flex flex-col gap-2">
+                <Link to="/employee/dashboard" onClick={() => setIsMenuOpen(false)}>
+                  <Button variant="outline" className="w-full">Employee Login</Button>
+                </Link>
+                <Link to="/admin/dashboard" onClick={() => setIsMenuOpen(false)}>
+                  <Button className="w-full">Admin Login</Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
       </header>
+
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-background to-muted">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2">
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
+        <section className="w-full py-12 sm:py-16 md:py-24 lg:py-32 bg-gradient-to-b from-background to-muted">
+          <div className="container px-4 sm:px-6">
+            <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+              <div className="flex flex-col justify-center space-y-6">
+                <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground w-fit">
                   All-in-one HR Solution
                 </div>
-                <div className="space-y-2">
-                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+                <div className="space-y-3">
+                  <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
                     Streamline Your HR Operations
                   </h1>
-                  <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    A comprehensive HRMS solution designed to manage your entire employee lifecycle from hiring to
-                    retirement with powerful tools for both HR teams and employees.
+                  <p className="max-w-[600px] text-muted-foreground text-base sm:text-lg md:text-xl">
+                    A comprehensive HRMS solution designed to manage your entire employee lifecycle from hiring to retirement with powerful tools for both HR teams and employees.
                   </p>
                 </div>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                <div className="flex flex-col gap-3 sm:flex-row">
                   <Link to="#demo">
-                    <Button size="lg" className="gap-1">
+                    <Button size="lg" className="w-full sm:w-auto gap-1">
                       Request Demo <ArrowRight className="h-4 w-4" />
                     </Button>
                   </Link>
                   <Link to="#features">
-                    <Button size="lg" variant="outline">
+                    <Button size="lg" variant="outline" className="w-full sm:w-auto">
                       Explore Features
                     </Button>
                   </Link>
                 </div>
               </div>
               <div className="flex items-center justify-center">
-                <div className="relative h-[400px] w-full rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 p-6 flex items-center justify-center overflow-hidden">
+                <div className="relative w-full h-[300px] sm:h-[350px] md:h-[400px] rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 p-4 sm:p-6 flex items-center justify-center overflow-hidden">
                   <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
-                  <div className="relative z-10 grid grid-cols-2 gap-4 md:grid-cols-3">
+                  <div className="relative z-10 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3">
                     {[
                       { name: "Job Hub", icon: <Building2 className="h-5 w-5" /> },
                       { name: "Employee Info", icon: <Users className="h-5 w-5" /> },
@@ -166,10 +228,10 @@ export default function HomePage() {
                     ].map((feature, i) => (
                       <div
                         key={i}
-                        className="flex h-28 w-full flex-col items-center justify-center rounded-lg bg-background p-4 shadow-md transition-all hover:shadow-lg hover:-translate-y-1"
+                        className="flex h-24 sm:h-28 w-full flex-col items-center justify-center rounded-lg bg-background p-3 sm:p-4 shadow-md transition-all hover:shadow-lg hover:-translate-y-1"
                       >
                         <div className="mb-2 rounded-full bg-primary/10 p-2">{feature.icon}</div>
-                        <span className="font-medium text-center">{feature.name}</span>
+                        <span className="font-medium text-center text-sm sm:text-base">{feature.name}</span>
                       </div>
                     ))}
                   </div>
@@ -181,8 +243,8 @@ export default function HomePage() {
 
         {/* Stats Section */}
         <section className="w-full py-12 bg-primary/5">
-          <div className="container px-4 md:px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+          <div className="container px-4 sm:px-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
               {stats.map((stat, index) => (
                 <StatCard key={index} label={stat.label} value={stat.value} />
               ))}
@@ -191,17 +253,17 @@ export default function HomePage() {
         </section>
 
         {/* Features Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32" id="features">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-10">
+        <section className="w-full py-12 sm:py-16 md:py-24 lg:py-32" id="features">
+          <div className="container px-4 sm:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8 sm:mb-10">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
                   Features
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter md:text-4xl">
                   Everything you need to manage your workforce
                 </h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="max-w-[900px] text-muted-foreground text-base sm:text-lg md:text-xl">
                   Our HRMS platform provides a comprehensive suite of tools to streamline your HR operations.
                 </p>
               </div>
@@ -215,15 +277,15 @@ export default function HomePage() {
         </section>
 
         {/* Testimonials Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-muted" id="testimonials">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-10">
+        <section className="w-full py-12 sm:py-16 md:py-24 lg:py-32 bg-muted" id="testimonials">
+          <div className="container px-4 sm:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8 sm:mb-10">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
                   Testimonials
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Trusted by leading companies</h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter md:text-4xl">Trusted by leading companies</h2>
+                <p className="max-w-[900px] text-muted-foreground text-base sm:text-lg md:text-xl">
                   See what our clients have to say about our HRMS solution.
                 </p>
               </div>
@@ -244,46 +306,46 @@ export default function HomePage() {
         </section>
 
         {/* How It Works Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-10">
+        <section className="w-full py-12 sm:py-16 md:py-24 lg:py-32">
+          <div className="container px-4 sm:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8 sm:mb-10">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
                   How It Works
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter md:text-4xl">
                   Simple implementation, powerful results
                 </h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="max-w-[900px] text-muted-foreground text-base sm:text-lg md:text-xl">
                   Get up and running with our HRMS in just a few simple steps.
                 </p>
               </div>
             </div>
-            <div className="grid gap-6 md:grid-cols-3">
-              <div className="flex flex-col items-center text-center space-y-2 p-4">
+            <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+              <div className="flex flex-col items-center text-center space-y-3 p-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground text-xl font-bold">
                   1
                 </div>
-                <h3 className="text-xl font-bold">Setup Your Account</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-lg sm:text-xl font-bold">Setup Your Account</h3>
+                <p className="text-muted-foreground text-sm sm:text-base">
                   Create your organization profile and configure your departments, teams, and user roles.
                 </p>
               </div>
-              <div className="flex flex-col items-center text-center space-y-2 p-4">
+              <div className="flex flex-col items-center text-center space-y-3 p-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground text-xl font-bold">
                   2
                 </div>
-                <h3 className="text-xl font-bold">Import Your Data</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-lg sm:text-xl font-bold">Import Your Data</h3>
+                <p className="text-muted-foreground text-sm sm:text-base">
                   Easily import your employee data, or start fresh with our intuitive data entry forms.
                 </p>
               </div>
-              <div className="flex flex-col items-center text-center space-y-2 p-4">
+              <div className="flex flex-col items-center text-center space-y-3 p-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground text-xl font-bold">
                   3
                 </div>
-                <h3 className="text-xl font-bold">Start Managing</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-lg sm:text-xl font-bold">Start Managing</h3>
+                <p className="text-muted-foreground text-sm sm:text-base">
                   Begin using the platform for your HR operations and invite your employees to access their accounts.
                 </p>
               </div>
@@ -292,55 +354,55 @@ export default function HomePage() {
         </section>
 
         {/* CTA Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground" id="demo">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+        <section className="w-full py-12 sm:py-16 md:py-24 lg:py-32 bg-primary text-primary-foreground" id="demo">
+          <div className="container px-4 sm:px-6">
+            <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
               <div className="space-y-4">
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter md:text-4xl">
                   Ready to transform your HR operations?
                 </h2>
-                <p className="text-primary-foreground/90 md:text-xl">
+                <p className="text-primary-foreground/90 text-base sm:text-lg md:text-xl">
                   Schedule a personalized demo to see how our HRMS can help your organization streamline HR processes
                   and improve employee experience.
                 </p>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button size="lg" variant="secondary" className="gap-1">
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <Button size="lg" variant="secondary" className="w-full sm:w-auto gap-1">
                     Request Demo <ArrowRight className="h-4 w-4" />
                   </Button>
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10"
+                    className="w-full sm:w-auto border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10"
                   >
                     Contact Sales
                   </Button>
                 </div>
               </div>
-              <div className="bg-primary-foreground/10 rounded-xl p-6">
-                <div className="grid gap-4">
+              <div className="bg-primary-foreground/10 rounded-xl p-4 sm:p-6">
+                <div className="grid gap-3 sm:gap-4">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 text-primary-foreground" />
-                    <span>Comprehensive HR management tools</span>
+                    <span className="text-sm sm:text-base">Comprehensive HR management tools</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 text-primary-foreground" />
-                    <span>Employee self-service portal</span>
+                    <span className="text-sm sm:text-base">Employee self-service portal</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 text-primary-foreground" />
-                    <span>Advanced analytics and reporting</span>
+                    <span className="text-sm sm:text-base">Advanced analytics and reporting</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 text-primary-foreground" />
-                    <span>Mobile-friendly interface</span>
+                    <span className="text-sm sm:text-base">Mobile-friendly interface</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 text-primary-foreground" />
-                    <span>Dedicated support team</span>
+                    <span className="text-sm sm:text-base">Dedicated support team</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 text-primary-foreground" />
-                    <span>Regular updates and new features</span>
+                    <span className="text-sm sm:text-base">Regular updates and new features</span>
                   </div>
                 </div>
               </div>
@@ -348,9 +410,10 @@ export default function HomePage() {
           </div>
         </section>
       </main>
+
       <footer className="w-full border-t py-6 bg-muted/50">
-        <div className="container px-4 md:px-6">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+  <div className="container px-4 sm:px-6 mx-auto">
+    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 items-center justify-center">
             <div className="space-y-4">
               <div className="flex items-center gap-2 font-bold text-xl">
                 <Building2 className="h-6 w-6" />
@@ -436,9 +499,9 @@ export default function HomePage() {
               </ul>
             </div>
           </div>
-          <div className="mt-8 border-t pt-6 flex flex-col md:flex-row justify-between items-center">
+          <div className="mt-8 border-t pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">© 2023 HRMS Portal. All rights reserved.</p>
-            <div className="flex gap-4 mt-4 md:mt-0">
+            <div className="flex gap-4">
               <Link to="#" className="text-muted-foreground hover:text-foreground">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -500,7 +563,7 @@ export default function HomePage() {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="2"
+ reWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   className="h-5 w-5"

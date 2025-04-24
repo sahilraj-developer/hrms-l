@@ -115,7 +115,7 @@ export default function EmployeeLearningPage() {
       </CardHeader>
       <CardContent>
         <div className="space-y-3">
-          <img src={course.image} alt={course.title} width={400} height={200} className="rounded-lg" />
+          <img src={course.image} alt={course.title} className="h-70 w-full object-center rounded-md shadow-md" />
           <p className="text-sm text-muted-foreground">{course.description}</p>
           <div className="flex gap-2 flex-wrap">
             <Badge>{course.category}</Badge>

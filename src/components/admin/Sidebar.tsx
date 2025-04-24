@@ -52,7 +52,7 @@ const Sidebar = () => {
       >
         {/* Sidebar Header */}
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-bold">HR Panel</h2>
+          <h2 className="text-xl font-bold">Employee Panel</h2>
           {/* Close Button (Mobile) */}
           <Button
             className="md:hidden"

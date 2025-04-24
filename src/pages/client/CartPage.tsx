@@ -31,7 +31,7 @@ export default function CartPage() {
             <img src={item.image} alt={item.name} className="w-32 h-32 rounded" />
             <CardContent className="flex-grow">
               <h2 className="text-lg font-semibold">{item.name}</h2>
-              <p className="text-gray-600">${item.price} x {item.quantity}</p>
+              <p className="text-gray-600">₹{item.price} x {item.quantity}</p>
               <div className="flex gap-2 mt-2">
                 <Button size="sm" onClick={() => updateQuantity(item.id, -1)}>-</Button>
                 <span className="px-3">{item.quantity}</span>
@@ -46,7 +46,7 @@ export default function CartPage() {
       </div>
       <div className="mt-6 flex justify-between text-lg font-bold">
         <span>Total:</span>
-        <span>${totalPrice}</span>
+        <span>₹{totalPrice}</span>
       </div>
       <Button className="w-full mt-4">Proceed to Checkout</Button>
     </div>

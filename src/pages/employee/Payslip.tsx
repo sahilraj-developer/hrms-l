@@ -96,7 +96,7 @@ export default function EmployeePayslipsPage() {
               <CardDescription>Total earnings in 2023</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">$29,104.50</div>
+              <div className="text-2xl font-bold">₹29,104.50</div>
               <p className="text-xs text-muted-foreground">From January 1, 2023 to present</p>
             </CardContent>
           </Card>
@@ -106,7 +106,7 @@ export default function EmployeePayslipsPage() {
               <CardDescription>Total taxes paid in 2023</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">$6,895.50</div>
+              <div className="text-2xl font-bold">₹6,895.50</div>
               <p className="text-xs text-muted-foreground">Federal, State, and Local taxes</p>
             </CardContent>
           </Card>
@@ -116,7 +116,7 @@ export default function EmployeePayslipsPage() {
               <CardDescription>Most recent payment</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">${currentPayslip.netPay.toFixed(2)}</div>
+              <div className="text-2xl font-bold">₹{currentPayslip.netPay.toFixed(2)}</div>
               <p className="text-xs text-muted-foreground">
                 {currentPayslip.period} • Paid on {format(new Date(currentPayslip.date), "MMM d, yyyy")}
               </p>
@@ -148,15 +148,15 @@ export default function EmployeePayslipsPage() {
                     <div className="grid grid-cols-3 gap-2 text-sm">
                       <div>
                         <span className="text-muted-foreground">Gross Pay:</span>
-                        <p className="font-medium">${payslip.grossPay.toFixed(2)}</p>
+                        <p className="font-medium">₹{payslip.grossPay.toFixed(2)}</p>
                       </div>
                       <div>
                         <span className="text-muted-foreground">Deductions:</span>
-                        <p className="font-medium">${payslip.deductions.toFixed(2)}</p>
+                        <p className="font-medium">₹{payslip.deductions.toFixed(2)}</p>
                       </div>
                       <div>
                         <span className="text-muted-foreground">Net Pay:</span>
-                        <p className="font-medium">${payslip.netPay.toFixed(2)}</p>
+                        <p className="font-medium">₹{payslip.netPay.toFixed(2)}</p>
                       </div>
                     </div>
                     <div className="flex justify-end gap-2 pt-2">
@@ -224,15 +224,15 @@ export default function EmployeePayslipsPage() {
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
                       <span>Gross Earnings:</span>
-                      <span className="font-medium">$36,000.00</span>
+                      <span className="font-medium">₹36,000.00</span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Total Taxes:</span>
-                      <span className="font-medium">$6,895.50</span>
+                      <span className="font-medium">₹6,895.50</span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Net Pay:</span>
-                      <span className="font-medium">$29,104.50</span>
+                      <span className="font-medium">₹29,104.50</span>
                     </div>
                   </div>
                 </div>
