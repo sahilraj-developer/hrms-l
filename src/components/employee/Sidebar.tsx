@@ -67,22 +67,23 @@ const Sidebar = () => {
         {/* Sidebar Navigation */}
         <nav className="space-y-3">
           {[
-            { name: "Dashboard", path: "/admin", icon: <Building2 className="h-5 w-5" /> },
-            // { name: "Users", path: "/admin/users" },
-            { name: "Employee Hiring", path: "/admin/employee-hiring", icon: <Users className="h-5 w-5" />, },
-            { name: "Employee Info", path: "/admin/employee-info",icon: <User className="h-5 w-5" />, },
-            { name: "Health", path: "/admin/health" ,icon: <Activity className="h-5 w-5" />,},
-            { name: "Job Hub", path: "/admin/job-hub", icon: <Briefcase className="h-5 w-5" /> },
-            { name: "Learning", path: "/admin/learning",icon: <GraduationCap className="h-5 w-5" />, },
-            { name: "Leaves", path: "/admin/leaves",icon: <Calendar className="h-5 w-5" />, },
-            { name: "Organisation", path: "/admin/organisation", icon: <Network className="h-5 w-5" />, },
-            { name: "Payroll", path: "/admin/payroll",icon: <DollarSign className="h-5 w-5" />, },
-            { name: "Performance", path: "/admin/performance",icon: <BarChart3 className="h-5 w-5" />, },
-            { name: "Projects", path: "/admin/projects" , icon: <FolderKanban className="h-5 w-5" />,},
-            { name: "Reimbursement", path: "/admin/reimbursement" ,icon: <Receipt className="h-5 w-5" />,},
+            { name: "Dashboard", path: "/employee", icon: <Building2 className="h-5 w-5" /> },
+            { name: "Profile", path: "/employee/profile" ,icon: <Receipt className="h-5 w-5" />, },
+            // { name: "Employee Hiring", path: "/employee/employee-hiring", icon: <Users className="h-5 w-5" />, },
+            // { name: "Employee Info", path: "/employee/employee-info",icon: <User className="h-5 w-5" />, },
+            // { name: "Health", path: "/employee/health" ,icon: <Activity className="h-5 w-5" />,},
+            // { name: "Job Hub", path: "/employee/job-hub", icon: <Briefcase className="h-5 w-5" /> },
+            { name: "Learning", path: "/employee/learning",icon: <GraduationCap className="h-5 w-5" />, },
+            { name: "Leaves", path: "/employee/leaves",icon: <Calendar className="h-5 w-5" />, },
+            // { name: "Organisation", path: "/employee/organisation", icon: <Network className="h-5 w-5" />, },
+            { name: "Payslip", path: "/employee/payslip",icon: <DollarSign className="h-5 w-5" />, },
+            // { name: "Payroll", path: "/employee/payroll",icon: <DollarSign className="h-5 w-5" />, },
+            // { name: "Performance", path: "/employee/performance",icon: <BarChart3 className="h-5 w-5" />, },
+            { name: "Projects", path: "/employee/projects" , icon: <FolderKanban className="h-5 w-5" />,},
+            { name: "Reimbursement", path: "/employee/reimbursement" ,icon: <Receipt className="h-5 w-5" />,},
 
             // { name: "Reports", path: "/admin/reports" },
-            { name: "Settings", path: "/admin/settings" ,icon: <Settings className="h-5 w-5" />,},
+            { name: "Settings", path: "/employee/settings" ,icon: <Settings className="h-5 w-5" />,},
             // { name: "CMS", path: "/admin/cms" },
             
           ].map((item) => (

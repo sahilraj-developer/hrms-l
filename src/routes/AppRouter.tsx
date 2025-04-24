@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-d
 import { AuthProvider } from "../auth/AuthProvider";
 import ProtectedRoute from "../auth/ProtectedRoute";
 import AdminLayout from "../layouts/AdminLayout";
+import EmployeeLayout from "../layouts/EmployeeLayout";
 import ClientLayout from "../layouts/ClientLayout";
 import Dashboard from "../pages/admin/Dashboard";
 import Users from "../pages/admin/Users";
@@ -25,6 +26,13 @@ import PayrollPage from "@/pages/admin/Payroll";
 import PerformancePage from "@/pages/admin/Performance";
 import ProjectsPage from "@/pages/admin/Projects";
 import ReimbursementPage from "@/pages/admin/Reimbursement";
+import EmployeeDashboard from "@/pages/employee/Dashboard";
+import EmployeeLeavesPage from "@/pages/employee/Leaves";
+import EmployeePayslipsPage from "@/pages/employee/Payslip";
+import EmployeeProfile from "@/pages/employee/Profile";
+import EmployeeLearningPage from "@/pages/employee/Learning";
+import EmployeeProjectsPage from "@/pages/employee/Projects";
+import EmployeeReimbursementPage from "@/pages/employee/Reimbursement";
 
 const AppRouter = () => {
   return (
@@ -34,6 +42,208 @@ const AppRouter = () => {
           {/* Public Routes */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+
+
+
+          {/* employee */}
+
+
+
+          {/* Protected Admin Routes */}
+          <Route
+            path="/employee/*"
+            element={
+              // <ProtectedRoute>
+              <EmployeeLayout>
+                <EmployeeDashboard/>
+              </EmployeeLayout>
+              // </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/employee/profile"
+            element={
+              // <ProtectedRoute>
+              <EmployeeLayout>
+                <EmployeeProfile/>
+              </EmployeeLayout>
+              // </ProtectedRoute>
+            }
+          />
+
+
+
+          <Route
+            path="/employee/employee-hiring"
+            element={
+              // <ProtectedRoute>
+              <EmployeeLayout>
+                <EmployeeHiring />
+              </EmployeeLayout>
+              // </ProtectedRoute>
+            }
+          />
+
+
+          <Route
+            path="/employee/employee-info"
+            element={
+              // <ProtectedRoute>
+              <EmployeeLayout>
+                <EmployeeInfoPage />
+              </EmployeeLayout>
+              // </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/employee/health"
+            element={
+              // <ProtectedRoute>
+              <EmployeeLayout>
+                <HealthPage />
+              </EmployeeLayout>
+              // </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/employee/job-hub"
+            element={
+              // <ProtectedRoute>
+              <EmployeeLayout>
+                <JobHubPage />
+              </EmployeeLayout>
+              // </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/employee/learning"
+            element={
+              // <ProtectedRoute>
+              <EmployeeLayout>
+                <EmployeeLearningPage/>
+              </EmployeeLayout>
+              // </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/employee/leaves"
+            element={
+              // <ProtectedRoute>
+              <EmployeeLayout>
+                <EmployeeLeavesPage/>
+              </EmployeeLayout>
+              // </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/employee/organisation"
+            element={
+              // <ProtectedRoute>
+              <EmployeeLayout>
+                <OrganizationPage />
+              </EmployeeLayout>
+              // </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/employee/payroll"
+            element={
+              // <ProtectedRoute>
+              <EmployeeLayout>
+                <PayrollPage />
+              </EmployeeLayout>
+              // </ProtectedRoute>
+            }
+          />
+
+
+           <Route
+            path="/employee/payslip"
+            element={
+              // <ProtectedRoute>
+              <EmployeeLayout>
+                <EmployeePayslipsPage/>
+              </EmployeeLayout>
+              // </ProtectedRoute>
+            }
+          />
+
+
+          {/* <Route
+            path="/employee/performance"
+            element={
+              // <ProtectedRoute>
+              <EmployeeLayout>
+                <PerformancePage />
+              </EmployeeLayout>
+              // </ProtectedRoute>
+            }
+          /> */}
+
+          <Route
+            path="/employee/projects"
+            element={
+              // <ProtectedRoute>
+              <EmployeeLayout>
+                <EmployeeProjectsPage/>
+              </EmployeeLayout>
+              // </ProtectedRoute>
+            }
+          />
+
+
+
+          <Route
+            path="/employee/reimbursement"
+            element={
+              // <ProtectedRoute>
+              <EmployeeLayout>
+                <EmployeeReimbursementPage/>
+              </EmployeeLayout>
+              // </ProtectedRoute>
+            }
+          />
+
+
+
+          <Route
+            path="/employee/reports"
+            element={
+              // <ProtectedRoute>
+              <EmployeeLayout>
+                <Reports />
+              </EmployeeLayout>
+              // </ProtectedRoute>
+            }
+          />
+
+
+
+          <Route
+            path="/employee/settings"
+            element={
+              // <ProtectedRoute>
+              <EmployeeLayout>
+                <Settings />
+              </EmployeeLayout>
+              // </ProtectedRoute>
+            }
+          />
+
+
+
+
+          {/* employee */}
+
+
+
+          {/* admin */}
 
           {/* Protected Admin Routes */}
           <Route
@@ -149,23 +359,23 @@ const AppRouter = () => {
           />
 
 
-<Route
+          <Route
             path="/admin/performance"
             element={
               // <ProtectedRoute>
               <AdminLayout>
-                <PerformancePage/>
+                <PerformancePage />
               </AdminLayout>
               // </ProtectedRoute>
             }
           />
 
-<Route
+          <Route
             path="/admin/projects"
             element={
               // <ProtectedRoute>
               <AdminLayout>
-                <ProjectsPage/>
+                <ProjectsPage />
               </AdminLayout>
               // </ProtectedRoute>
             }
@@ -173,12 +383,12 @@ const AppRouter = () => {
 
 
 
-<Route
+          <Route
             path="/admin/reimbursement"
             element={
               // <ProtectedRoute>
               <AdminLayout>
-                <ReimbursementPage/>
+                <ReimbursementPage />
               </AdminLayout>
               // </ProtectedRoute>
             }
@@ -224,13 +434,20 @@ const AppRouter = () => {
           />
 
 
+          {/* admin */}
+
+
+
+          {/* client */}
+
+
           {/* Protected Client Routes */}
           <Route
             path="/client/*"
             element={
               <ProtectedRoute>
                 {/* <ClientLayout> */}
-                  <Home />
+                <Home />
                 {/* </ClientLayout> */}
               </ProtectedRoute>
             }
@@ -267,6 +484,9 @@ const AppRouter = () => {
               </ProtectedRoute>
             }
           />
+
+
+          {/* client */}
 
 
 
